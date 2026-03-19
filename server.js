@@ -3,7 +3,10 @@ const cors = require('cors');
 const db = require('./db');
 
 const app = express();
-app.use(cors());
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || '*',
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Get all messages
